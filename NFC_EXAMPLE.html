@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Bob Del Rosario · Find me online</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,800&family=Instrument+Sans:wght@400;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --blue:#2338f5; --sig:#ffd84a; --mist:#dde1ff;
+  --paper:#f7f8fc; --ink:#10122b; --card:#ffffff; --line:#d9dcf0; --muted:#575c85;
+  --display:"Bricolage Grotesque","Helvetica Neue",Arial,sans-serif;
+  --body:"Instrument Sans","Helvetica Neue",Arial,sans-serif;
+  box-sizing:border-box;
+  padding-top:env(safe-area-inset-top,0px);
+  padding-bottom:env(safe-area-inset-bottom,0px);
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){--paper:#0e1030;--ink:#f2f3ff;--card:#171a45;--line:#2a2e66;--muted:#a3a8d8}
+}
+:root[data-theme="dark"]{--paper:#0e1030;--ink:#f2f3ff;--card:#171a45;--line:#2a2e66;--muted:#a3a8d8}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+*,*::before,*::after{box-sizing:border-box}
+body{margin:0;background:var(--blue);color:var(--ink);font-family:var(--body);-webkit-font-smoothing:antialiased}
+
+.page{
+  min-height:calc(100dvh - env(safe-area-inset-top,0px) - env(safe-area-inset-bottom,0px));
+  display:grid;grid-template-columns:1fr;grid-template-rows:auto 1fr;
+}
+
+/* Hero: the NFC rings are the one memorable element */
+.who{
+  background:var(--blue);color:#fff;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  text-align:center;padding:40px 24px 56px;
+}
+.rings{position:relative;width:208px;height:208px;display:grid;place-items:center;margin-bottom:28px}
+.ring{position:absolute;inset:0;border-radius:50%;border:2px solid rgba(255,255,255,.4);animation:tap 1.6s ease-out both}
+.ring:nth-child(2){inset:22px;animation-delay:.18s;border-color:rgba(255,255,255,.55)}
+.ring:nth-child(3){inset:44px;animation-delay:.36s;border-color:rgba(255,255,255,.8)}
+@keyframes tap{from{transform:scale(.4);opacity:0}to{transform:scale(1);opacity:1}}
+.avatar{
+  position:relative;width:104px;height:104px;border-radius:50%;overflow:hidden;
+  background:var(--sig);color:#10122b;display:grid;place-items:center;
+  font:800 38px/1 var(--display);letter-spacing:-.02em;
+}
+.avatar img{width:100%;height:100%;object-fit:cover;object-position:center;display:block;border-radius:50%}
+h1{font:800 clamp(2rem,6vw,3.4rem)/1.02 var(--display);letter-spacing:-.03em;margin:0 0 10px}
+.role{margin:0 0 14px;font-size:1.05rem;font-weight:600;color:var(--mist)}
+.note{margin:0;max-width:30ch;font-size:1rem;line-height:1.5;color:var(--mist)}
+
+/* Links */
+.links{
+  background:var(--paper);
+  border-radius:28px 28px 0 0;margin-top:-28px;position:relative;
+  padding:32px 20px 40px;
+  display:flex;flex-direction:column;align-items:center;justify-content:flex-start;
+}
+.list{width:100%;max-width:460px;display:grid;gap:12px;margin:0;padding:0;list-style:none}
+.link{
+  display:flex;align-items:center;gap:16px;
+  padding:16px 18px;border-radius:16px;
+  background:var(--card);border:1.5px solid var(--line);
+  color:var(--ink);text-decoration:none;min-height:68px;
+  transition:transform .15s ease,border-color .15s ease,background-color .15s ease;
+}
+.link:hover{border-color:var(--blue);transform:translateY(-2px)}
+.link:active{transform:translateY(0)}
+.link:focus-visible{outline:3px solid var(--blue);outline-offset:3px}
+.ico{
+  flex:none;width:44px;height:44px;border-radius:12px;display:grid;place-items:center;
+  background:var(--blue);color:#fff;
+}
+.ico svg{width:22px;height:22px}
+.txt{display:flex;flex-direction:column;min-width:0}
+.txt b{font:600 1.1rem/1.2 var(--display)}
+.txt span{font-size:.92rem;color:var(--muted);overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+button.link{appearance:none;-webkit-appearance:none;width:100%;font:inherit;text-align:left;cursor:pointer}
+.foot{margin:28px 0 0;font-size:.85rem;color:var(--muted)}
+
+/* Laptop: split screen, rings on the left, links on the right */
+@media (min-width:880px){
+  .page{grid-template-columns:5fr 6fr;grid-template-rows:1fr}
+  .who{padding:64px;position:sticky;top:0;height:calc(100dvh - env(safe-area-inset-top,0px) - env(safe-area-inset-bottom,0px))}
+  .links{border-radius:0;margin-top:0;justify-content:center;padding:64px}
+  .list{gap:14px}
+  .link{padding:18px 22px;min-height:76px}
+  .rings{width:260px;height:260px}
+  .ring:nth-child(2){inset:28px}.ring:nth-child(3){inset:56px}
+  .avatar{width:128px;height:128px;font-size:46px}
+}
+@media (prefers-reduced-motion:reduce){
+  .ring{animation:none}
+  .link{transition:none}
+}
+</style>
+</head>
+<body>
+<main class="page">
+  <header class="who">
+    <div class="rings" aria-hidden="true">
+      <span class="ring"></span><span class="ring"></span><span class="ring"></span>
+      <div class="avatar"><img src="https://i.pinimg.com/736x/ad/86/8c/ad868c267c345c82e8be22d85b4319b3.jpg" alt="Bob Del Rosario" referrerpolicy="no-referrer" onerror="this.replaceWith('YN')"></div>
+    </div>
+    <h1>Bob Del Rosario</h1>
+    <p class="role">BS Entrepreneurship student from De La Salle Manila</p>
+    <p class="note">You tapped the card. Pick where you'd like to find me.</p>
+  </header>
+
+  <section class="links" aria-label="Social links">
+    <ul class="list">
+
+      <li>
+        <a class="link" href="https://www.linkedin.com/login" target="_blank" rel="noopener">
+          <span class="ico"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><rect x="3" y="9" width="4" height="12" rx=".5"/><circle cx="5" cy="5" r="2.2"/><path d="M10 9h3.8v1.8C14.6 9.5 16 8.7 17.7 8.7c3.4 0 4.3 2.2 4.3 5.3v7h-4v-6.2c0-1.5-.5-2.5-1.9-2.5s-2 1-2 2.5V21h-4z"/></svg></span>
+          <span class="txt"><b>LinkedIn</b><span>linkedin.com/in/BobDelRosario</span></span>
+        </a>
+      </li>
+
+      <li>
+        <a class="link" href="https://www.instagram.com/accounts/login/?hl=en" target="_blank" rel="noopener">
+          <span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.3" cy="6.7" r=".6" fill="currentColor"/></svg></span>
+          <span class="txt"><b>Instagram</b><span>@BobDaGoat</span></span>
+        </a>
+      </li>
+
+      <li>
+        <a class="link" href="https://www.facebook.com/login/" target="_blank" rel="noopener">
+          <span class="ico"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M14 8.5V7c0-.7.3-1 1-1h2.5V2H14.2C11.3 2 9.8 3.8 9.8 6.5v2H7v4h2.8V22H14v-9.5h3.2l.6-4z"/></svg></span>
+          <span class="txt"><b>Facebook</b><span>facebook.com/BobPogi</span></span>
+        </a>
+      </li>
+
+      <li>
+        <a class="link" href="https://drive.google.com/file/d/1J8Z6GK3Mxmd5-n_Az4XbWqXayw6hfC-W/view?usp=sharing" target="_blank" rel="noopener">
+          <span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5"/><path d="M9 13h6"/><path d="M9 17h6"/></svg></span>
+          <span class="txt"><b>CV</b><span>View my CV</span></span>
+        </a>
+      </li>
+
+      <li>
+        <button class="link" id="saveContact" type="button">
+          <span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="8" r="4"/><path d="M2 21v-1a6 6 0 0 1 6-6h2a6 6 0 0 1 6 6v1"/><path d="M19 8v6"/><path d="M16 11h6"/></svg></span>
+          <span class="txt"><b>Save contact</b><span>Add me to your phone</span></span>
+        </button>
+      </li>
+
+    </ul>
+    <p class="foot">Tap a button to open the profile.</p>
+  </section>
+</main>
+
+<script>
+const CONTACT = {
+  firstName: "Bob",
+  lastName:  "Del Rosario",
+  phone:     "+63 900 000 0000",
+  email:     "Bob_DelRosario@dlsu.edu.ph",
+  org:       "De La Salle Manila",
+  title:     "Bob Del Rosario - BS Entrepreneurship student",
+  website:   ""
+};
+
+function vEsc(s){return String(s).replace(/\\/g,"\\\\").replace(/\n/g,"\\n").replace(/;/g,"\\;").replace(/,/g,"\\,");}
+
+function saveContact(){
+  const c = CONTACT;
+  const lines = ["BEGIN:VCARD","VERSION:3.0",
+    "N:" + vEsc(c.lastName) + ";" + vEsc(c.firstName) + ";;;",
+    "FN:" + vEsc(c.firstName + " " + c.lastName)];
+  if (c.org)     lines.push("ORG:" + vEsc(c.org));
+  if (c.title)   lines.push("TITLE:" + vEsc(c.title));
+  if (c.phone)   lines.push("TEL;TYPE=CELL:" + c.phone);
+  if (c.email)   lines.push("EMAIL;TYPE=INTERNET:" + c.email);
+  if (c.website) lines.push("URL:" + c.website);
+  lines.push("END:VCARD");
+  const text = lines.join("\r\n");
+  const file = (c.firstName + "-" + c.lastName).replace(/\s+/g,"-") + ".vcf";
+  try {
+    const url = URL.createObjectURL(new Blob([text], {type:"text/vcard;charset=utf-8"}));
+    const a = document.createElement("a");
+    a.href = url; a.download = file;
+    document.body.appendChild(a); a.click(); a.remove();
+    setTimeout(function(){ URL.revokeObjectURL(url); }, 1000);
+  } catch (e) {
+    location.href = "data:text/vcard;charset=utf-8," + encodeURIComponent(text);
+  }
+}
+document.getElementById("saveContact").addEventListener("click", saveContact);
+</script>
+</body>
+</html>
